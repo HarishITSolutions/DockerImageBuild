@@ -7,7 +7,7 @@ RUN apt upgrade -y
 RUN apt install -y python3
 RUN apt install -y python3-pip
 RUN pip3 install ansible
-RUN apt-get update && sudo apt-get install -y gnupg software-properties-common
+RUN apt install -y gnupg software-properties-common
 RUN wget -O- https://apt.releases.hashicorp.com/gpg | \
 gpg --dearmor | \
 sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
