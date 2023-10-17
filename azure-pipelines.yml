@@ -41,6 +41,6 @@ stages:
       displayName: Login to ACR
       inputs:
         command: login
-        containerRegistry: vernovaacr.azurecr.io
+        containerRegistry: $(dockerRegistryServiceConnection)
     - script: |
         docker run vernovaacr.azurecr.io/testimage:1080
