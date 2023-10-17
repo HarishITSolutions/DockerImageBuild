@@ -23,9 +23,9 @@ pip3 install ansible
 ################################
 
 # Download terraform for linux
-RUN wget https://releases.hashicorp.com/terraform/1.6.0/terraform_1.6.0_linux_386.zip
+RUN wget https://releases.hashicorp.com/terraform/1.6.0/terraform_1.6.0_linux_amd64.zip
 # Unzip
-RUN unzip terraform_0.11.11_linux_amd64.zip
+RUN unzip terraform_1.6.0_linux_amd64.zip
 
 # Move to local bin
 RUN mv terraform /usr/local/bin/
