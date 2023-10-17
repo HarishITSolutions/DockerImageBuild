@@ -49,6 +49,8 @@ stages:
   jobs:
   - job:
     displayName: "Build our container"
+    inputs:
+      containerRegistry: $(dockerRegistryServiceConnection)
     container:
       image: vernovaacr.azurecr.io/testimage:$(tag)
     steps:
