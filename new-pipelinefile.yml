@@ -8,14 +8,6 @@ trigger: none
 resources:
 - repo: self
 
-variables:
-  # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: 'd65c0e3a-7488-432b-94d3-7271162eac66'
-  imageRepository: 'testimage'
-  containerRegistry: 'vernovaacr.azurecr.io'
-  dockerfilePath: '**/Dockerfile'
-  tag: '$(Build.BuildId)'
-
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
 
@@ -26,6 +18,7 @@ stages:
     displayName: "Build our container"
     container:
       image: vernovaacr.azurecr.io/testimage:$(tag)
+      dockerRegistryServiceConnection: 'd65c0e3a-7488-432b-94d3-7271162eac66'
     steps:
     - script: terraform --version
       displayName: 'Check terraform version'
