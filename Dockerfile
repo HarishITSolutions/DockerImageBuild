@@ -1,15 +1,8 @@
 FROM ubuntu:22.04
 
+MAINTAINER 503356053@ge.com
+
 RUN apt update
 RUN apt upgrade -y
 RUN apt install -y curl git jq libicu70
-
-# Also can be "linux-arm", "linux-arm64".
-ENV TARGETARCH="linux-x64"
-
-WORKDIR /azp/
-
-COPY ./start.sh ./
-RUN chmod +x ./start.sh
-
-ENTRYPOINT ./start.sh
+CMD [“echo”,”Image created”] 
