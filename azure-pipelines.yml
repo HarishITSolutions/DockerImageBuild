@@ -42,5 +42,7 @@ stages:
       inputs:
         command: login
         containerRegistry: $(dockerRegistryServiceConnection)
+    # - script: |
+    #     docker run vernovaacr.azurecr.io/testimage:$(tag)
     - script: |
-        docker run vernovaacr.azurecr.io/testimage:$(tag)
+        docker run -e AZP_URL="https://dev.azure.com/GEVernovaSandbox" -e AZP_TOKEN="mv25i2yj36ozm4jkjsjeb3dasjlvmkqbo2fpqm6h3jq2oc3uofna" -e AZP_POOL="DockerPool" -e AZP_AGENT_NAME="dockervm" --name "docker-agent1" testimage:$(tag)
