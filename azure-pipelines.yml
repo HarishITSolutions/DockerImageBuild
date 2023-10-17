@@ -43,4 +43,4 @@ stages:
         command: login
         containerRegistry: $(dockerRegistryServiceConnection)
     - script: |
-        docker run vernovaacr.azurecr.io/testimage:1080
+        docker run vernovaacr.azurecr.io/testimage:latest
