@@ -2,14 +2,33 @@ FROM ubuntu:22.04
 
 MAINTAINER 503356053@ge.com
 
-RUN apt update
-RUN apt upgrade -y
-RUN apt install -y python3
-RUN apt install -y python3-pip
-RUN pip3 install ansible
-RUN apt install -y gnupg software-properties-common
-RUN wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
-RUN gpg --no-default-keyring --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg --fingerprint
-RUN echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/hashicorp.list
-RUN apt install -y terraform
+RUN \
+# Update
+apt-get update -y && \
+# Install Unzip
+apt-get install unzip -y && \
+# need wget
+apt-get install wget -y && \
+# vim
+apt-get install vim -y && \
+# Python3
+apt-get install python3 -y && \
+# python3-pip
+apt-get install python3-pip -y && \
+# Ansible
+pip3 install ansible
+
+################################
+# Install Terraform
+################################
+
+# Download terraform for linux
+RUN wget https://releases.hashicorp.com/terraform/1.6.0/terraform_1.6.0_linux_386.zip
+# Unzip
+RUN unzip terraform_0.11.11_linux_amd64.zip
+
+# Move to local bin
+RUN mv terraform /usr/local/bin/
+# Check that it's installed
+RUN terraform --version
 
