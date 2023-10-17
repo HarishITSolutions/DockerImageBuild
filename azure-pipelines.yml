@@ -45,13 +45,20 @@ stages:
     - script: |
         docker run vernovaacr.azurecr.io/testimage:$(tag)
 
-- stage: Build_our_container
-  jobs:
   - job:
     displayName: "Build our container"
-    containerRegistry: $(dockerRegistryServiceConnection)
     container:
       image: vernovaacr.azurecr.io/testimage:$(tag)
     steps:
     - script: terraform --version
       displayName: 'Check terraform version'
+
+# - stage: Build_our_container
+#   jobs:
+#   - job:
+#     displayName: "Build our container"
+#     container:
+#       image: vernovaacr.azurecr.io/testimage:$(tag)
+#     steps:
+#     - script: terraform --version
+#       displayName: 'Check terraform version'
