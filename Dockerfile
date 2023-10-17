@@ -6,5 +6,6 @@ RUN apt update
 RUN apt upgrade -y
 RUN apt install -y curl git jq libicu70
 RUN apt install -y python3
+RUN apt install -y python3-pip
 
 
