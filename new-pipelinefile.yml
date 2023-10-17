@@ -15,7 +15,7 @@ stages:
     displayName: "Build our container"
     container:
       image: vernovaacr.azurecr.io/testimage:$(tag)
-      endpoint: 'd65c0e3a-7488-432b-94d3-7271162eac66'
+      endpoint: 'vernovaacr'
     steps:
     - script: terraform --version
       displayName: 'Check terraform version'
