@@ -17,38 +17,6 @@ stages:
       image: vernovaacr.azurecr.io/testimage:1088
       endpoint: 'vernovaacr'
     steps:
-    - script: terraform --version
-      displayName: 'Check terraform version'
+    - script: apt list --installed
+      displayName: 'Check installed softwares'
 
-# - stage: Build
-#   displayName: Build and push stage
-#   jobs:
-#   - job: Build
-#     displayName: Build
-#     pool:
-#       vmImage: $(vmImageName)
-#     steps:
-#     - task: Docker@2
-#       displayName: Build and push an image to container registry
-#       inputs:
-#         command: buildAndPush
-#         repository: $(imageRepository)
-#         dockerfile: $(dockerfilePath)
-#         containerRegistry: $(dockerRegistryServiceConnection)
-#         tags: |
-#           $(tag)
-#     - task: Docker@2
-#       displayName: Login to ACR
-#       inputs:
-#         command: login
-#         containerRegistry: $(dockerRegistryServiceConnection)
-#     - script: |
-#         docker run vernovaacr.azurecr.io/testimage:$(tag)
-
-#   - job:
-#     displayName: "Build our container"
-#     container:
-#       image: vernovaacr.azurecr.io/testimage:$(tag)
-#     steps:
-#     - script: terraform --version
-#       displayName: 'Check terraform version'
