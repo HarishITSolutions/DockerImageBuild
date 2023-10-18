@@ -34,4 +34,4 @@ RUN terraform --version
 ################################
 # Install Azure Cli
 ################################
-
+RUN curl -LsS https://aka.ms/InstallAzureCLIDeb | bash && rm -rf /var/lib/apt/lists/*
