@@ -34,6 +34,15 @@ RUN terraform --version
 ################################
 # Install Azure Cli
 ################################
-RUN apt-get gcc musl-dev python3-dev libffi-dev openssl-dev cargo make
-RUN pip install --upgrade pip
-RUN pip install azure-cli
+ENV AZ_REPO $(lsb_release -cs)
+RUN echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" | tee /etc/apt/sources.list.d/azure-cli.list
+
+RUN apt-key --keyring /etc/apt/trusted.gpg.d/Microsoft.gpg adv \
+ --keyserver packages.microsoft.com \
+ --recv-keys BC528686B50D79E339D3721CEB3E94ADBE1229CF
+
+RUN apt-get update
+
+RUN apt-get install azure-cli
+
+CMD ["/bin/bash"]
