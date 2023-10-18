@@ -34,7 +34,6 @@ RUN terraform --version
 ################################
 # Install Azure Cli
 ################################
-RUN apt add py3-pip
-RUN apt add gcc musl-dev python3-dev libffi-dev openssl-dev cargo make
+RUN apt-get gcc musl-dev python3-dev libffi-dev openssl-dev cargo make
 RUN pip install --upgrade pip
 RUN pip install azure-cli
