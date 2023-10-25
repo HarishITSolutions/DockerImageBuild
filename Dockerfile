@@ -20,7 +20,6 @@ LABEL description="GESOS Packer Build Container"
 # Run Updates
 RUN apt-get update \
     && apt-get install software-properties-common \
-    && add-apt-repository "deb http://security.ubuntu.com/ubuntu xenial-security main" \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
         ca-certificates \
