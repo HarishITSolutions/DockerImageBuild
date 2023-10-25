@@ -3,7 +3,7 @@
 # Set the base image
 
 # FROM 144538309574.dkr.ecr.us-east-1.amazonaws.com/gesos-base-ubuntu:20.04
-FROM gesoscontainercentral.azurecr.io/gesos-base-ubuntu:20.04
+FROM ubuntu:22.04
 
 USER root
 
